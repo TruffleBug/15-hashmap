@@ -79,6 +79,20 @@ class LinkedList {
         }
     }
 
+    // returns value at given index
+    atValue(index) {
+        if (index < 0) return 'Invalid index';
+        else if (!this.head) return 'No nodes in list';
+
+        let current = this.head;
+        let currentIndex = 0;
+        while (current) {
+            if (currentIndex == index) return current.value;
+            current = current.nextNode;
+            currentIndex++;
+        }
+    }
+
     // removes last node
     pop() {
         if (!this.head) return 'No nodes in list';
@@ -128,12 +142,12 @@ class LinkedList {
     }
 
     // returns index of node containing key, otherwise null RECURSIVELY
-    findRECUSIVE(key, current = this.head, currentIndex = 0) {
+    findRECURSIVE(key, current = this.head, currentIndex = 0) {
         if (!this.head) return 'No nodes in list';
 
         if (!current.nextNode && current.key != key) return null;
         if (current.key === key) return currentIndex;
-        return this.findRECUSIVE(key, current.nextNode, currentIndex + 1);
+        return this.findRECURSIVE(key, current.nextNode, currentIndex + 1);
     }
 
     // prints to string
@@ -199,16 +213,41 @@ class LinkedList {
         }
     }
 
-    // update value at index RECURSIVELY
+    // update value at index but keeps same key RECURSIVELY
     updateValueRECURSIVE(index, newValue, current = this.head, currentIndex = 0) {
         if (!this.head) return 'No nodes in list';
+
+        if (index < 0 || index > this.size()) return 'Invalid index'
 
         if (currentIndex === index) {
             current.value = newValue;
             return;
         } 
-        return this.updateValueRECURSIVE(index, newValue, current.nextNode, currentIndex+1)
-        
+        return this.updateValueRECURSIVE(index, newValue, current.nextNode, currentIndex + 1);
+    }
+
+    // return array of all keys RECURSIVELY
+    allKeysRECURSIVE(current = this.head, currentIndex = 0, allKeys = []) {
+        if (!this.head) return 'No nodes in list';
+        allKeys.push(current.key);
+        if (!current.nextNode) return allKeys;
+        return this.allKeysRECURSIVE(current.nextNode, currentIndex + 1, allKeys);
+    }
+
+    // return array of all values RECURSIVELY
+    allValuesRECURSIVE(current = this.head, currentIndex = 0, allValues = []) {
+        if (!this.head) return 'No nodes in list';
+        allValues.push(current.value);
+        if (!current.nextNode) return allValues;
+        return this.allValuesRECURSIVE(current.nextNode, currentIndex + 1, allValues);
+    }
+
+    // return array of all entries RECURSIVELY
+    allEntriesRECURSIVE(current = this.head, currentIndex = 0, allEntries = []) {
+        if (!this.head) return 'No nodes in list';
+        allEntries.push([current.key, current.value]);
+        if (!current.nextNode) return allEntries;
+        return this.allEntriesRECURSIVE(current.nextNode, currentIndex + 1, allEntries);
     }
 }
 

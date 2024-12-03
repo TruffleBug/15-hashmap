@@ -13,10 +13,8 @@ import { LinkedList } from './linkedlist.js';
 // testLinkedList.prepend('frog', 'FROG');
 // testLinkedList.append('llama', 'LLAMA');
 
-
 // console.log(testLinkedList.toString());
-// console.log(testLinkedList.updateValueRECURSIVE(2, 'CATTEST'))
-// // testLinkedList.updateRECURSIVE(1, 'llama')
+// console.log(testLinkedList.updateValueRECURSIVE(0, 'FROGTEST'))
 // console.log(testLinkedList.toString());
 
 
@@ -24,13 +22,18 @@ import { LinkedList } from './linkedlist.js';
 // test hashmap
 const testHashMap = new HashMap();
 
-testHashMap.set('apple', 'APPLE');
-testHashMap.set('appkd', 'APPKD');
-testHashMap.set('apple', 'APPLETEST');
-testHashMap.set('appkd', 'APPKDTEST');
-
-testHashMap.set('banana', 'yellow');
-testHashMap.set('carrot', 'orange');
+testHashMap.set('apple', 'red')
+testHashMap.set('banana', 'yellow')
+testHashMap.set('carrot', 'orange')
+testHashMap.set('dog', 'brown')
+testHashMap.set('elephant', 'gray')
+testHashMap.set('frog', 'green')
+testHashMap.set('grape', 'purple')
+testHashMap.set('hat', 'black')
+testHashMap.set('ice cream', 'white')
+testHashMap.set('jacket', 'blue')
+testHashMap.set('kite', 'pink')
+testHashMap.set('lion', 'golden')
 
 console.log(testHashMap)
-// console.log(testHashMap.buckets[1].toString())
+console.log(testHashMap.entries())
